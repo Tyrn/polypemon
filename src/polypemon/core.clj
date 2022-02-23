@@ -16,6 +16,11 @@
   (println
    (Integer/toString (- pa pb) base)))
 
+(defn zero-pad
+  "Returns i zero-padded to n"
+  [i n]
+  (format (str "%0" n "d") i))
+
 (def CONFIGURATION
   {:app         {:command     "polypemon"
                  :description "A command-line toy calculator"
