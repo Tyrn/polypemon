@@ -24,6 +24,17 @@ Build
 
     $ lein compile && lein uberjar
 
+or just::
+
+    $ lein run [-- --help]
+
+Standalone build with GraalVM
+-----------------------------
+
+::
+
+    $ native-image --report-unsupported-elements-at-runtime -jar target/uberjar/polypemon-0.1.0-SNAPSHOT-standalone.jar target/uberjar/polypemon --no-fallback --initialize-at-build-time
+
 Format
 ------
 

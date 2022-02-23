@@ -2,7 +2,7 @@
     (:require [cli-matic.core :refer [run-cmd]]))
 
 ;; To run this, try from the project root:
-;; clj -i examples/toycalc.clj -m toycalc add -a 1 -b 80
+;; clj -i examples/polypemon.clj -m polypemon add -a 1 -b 80
 
 (defn add_numbers
   "Sums A and B together, and prints it in base `base`"
@@ -17,7 +17,7 @@
    (Integer/toString (- pa pb) base)))
 
 (def CONFIGURATION
-  {:app         {:command     "toycalc"
+  {:app         {:command     "polypemon"
                  :description "A command-line toy calculator"
                  :version     "0.0.1"}
    :global-opts [{:option  "base"
