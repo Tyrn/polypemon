@@ -1,5 +1,5 @@
-(ns polypemon.core
-  (:require [cli-matic.core :refer [run-cmd]]))
+(ns polypemon.core (:gen-class)
+    (:require [cli-matic.core :refer [run-cmd]]))
 
 ;; To run this, try from the project root:
 ;; clj -i examples/toycalc.clj -m toycalc add -a 1 -b 80

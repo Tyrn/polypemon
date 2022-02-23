@@ -5,6 +5,10 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.10.3"][cli-matic "0.4.3"]]
   :plugins [[lein-cljfmt "0.8.0"]]
-  :main polypemon.core
-  :aot :all
+  ;; :main polypemon.core
+  ;; :aot :all
+  :main ^:skip-aot polypemon.core
+  :target-path "target/%s"
+  :profiles {:uberjar {:aot :all
+                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}}
   :repl-options {:init-ns polypemon.core})
