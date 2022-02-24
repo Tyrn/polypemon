@@ -1,6 +1,6 @@
 (ns polypemon.core-test
-  (:require [clojure.test :refer :all]
-            [midje.sweet :refer :all]
+  (:require [clojure.test :refer [deftest is testing]]
+            [midje.sweet :refer [fact =>]]
             [polypemon.core :refer :all]))
 
 (deftest a-test

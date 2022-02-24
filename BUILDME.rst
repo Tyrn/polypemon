@@ -8,6 +8,7 @@ Development
 
 - `Format Clojure code <https://github.com/weavejester/cljfmt>`__
 - `GraalVM Native Image <https://www.graalvm.org/22.0/reference-manual/native-image/>`__
+- `Testing with Midje <https://github.com/marick/Midje/wiki/A-tutorial-introduction>`__
 
 Prerequisites
 -------------
@@ -48,16 +49,16 @@ Test
 
 ::
 
-    $ lein
+    $ lein test
+
+or::
+
+    $ lein midje
 
 Install
 -------
 
-Install to ``~/.local/bin``:
-
-::
-
-    $ lein
+Copy standalone ``polypemon`` target to ``~/.local/bin`` or ``/usr/local/bin``:
 
 Publish
 -------
