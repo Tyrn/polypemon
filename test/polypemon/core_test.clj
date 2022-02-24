@@ -1,7 +1,8 @@
 (ns polypemon.core-test
   (:require [clojure.test :refer [deftest is testing]]
             [midje.sweet :refer [fact =>]]
-            [polypemon.core :refer :all]))
+            [polypemon.core :refer [zero-pad
+                                    str-strip-numbers]]))
 
 (deftest a-test
   (testing "FIXME, I fail."
