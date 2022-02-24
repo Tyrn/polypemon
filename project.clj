@@ -6,7 +6,8 @@
   :dependencies [[org.clojure/clojure "1.10.3"]
                  [midje "1.10.5"]
                  [cli-matic "0.4.3"]]
-  :plugins [[lein-cljfmt "0.8.0"]]
+  :plugins [[lein-cljfmt "0.8.0"]
+            [lein-midje "3.2.2"]]
   ;; :main polypemon.core
   ;; :aot :all
   :main ^:skip-aot polypemon.core
