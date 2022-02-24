@@ -21,6 +21,16 @@
   [i n]
   (format (str "%0" n "d") i))
 
+(defn str-strip-numbers
+  "Returns a vector of integer numbers
+  embedded in a string argument"
+  [s]
+  (let [matcher (re-matcher #"\d+" s)]
+    (loop [match (re-find matcher) result []]
+      (if-not match
+        result
+        (recur (re-find matcher) (conj result (Integer/parseInt match)))))))
+
 (def CONFIGURATION
   {:app         {:command     "polypemon"
                  :description "A command-line toy calculator"
