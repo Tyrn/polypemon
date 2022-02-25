@@ -18,7 +18,7 @@
 
 (defn zero-pad
   "Returns i zero-padded to n"
-  [i n]
+  [n i]
   (format (str "%0" n "d") i))
 
 (defn str-strip-numbers

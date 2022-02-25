@@ -8,11 +8,14 @@
   (testing "FIXME, I fail."
     (is (= 0 0))))
 
+(def three-pad (partial zero-pad 3))
+
 (fact
  "Returns a zero padded string representation of integer"
- (zero-pad 1 4) => "0001"
- (zero-pad 15111 4) => "15111"
- (zero-pad 2 5) => "00002")
+ (three-pad 3) => "003"
+ (zero-pad 4 1) => "0001"
+ (zero-pad 4 15111) => "15111"
+ (zero-pad 5 2) => "00002")
 
 (fact
  "Returns a vector of integer numbers
