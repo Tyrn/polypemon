@@ -2,7 +2,8 @@
   (:require [clojure.test :refer [deftest is testing]]
             [midje.sweet :refer [fact =>]]
             [polypemon.core :refer [zero-pad
-                                    str-strip-numbers]]))
+                                    str-strip-numbers
+                                    initials]]))
 
 (deftest a-test
   (testing "FIXME, I fail."
@@ -22,3 +23,8 @@
   embedded in a string argument"
  (str-strip-numbers "ab11cdd2k.144") => [11, 2, 144]
  (str-strip-numbers "Ignacio Vazquez-Abrams") => [])
+
+(fact
+ "Reduces authors to initials"
+ (initials "Ignacio Vasquez-Adams") => "I.V-A."
+ (initials "John Keegan") => "J.K.")
