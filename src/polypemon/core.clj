@@ -42,6 +42,12 @@
       (cond (and (Character/isLowerCase (first (second cut))) (not (cs/blank? (first cut))))
             (cs/upper-case (str (first (first cut))))
             :else (str (first cut) "'" (first (second cut))))
+      (and (> (count name) 1) (some #(Character/isUpperCase %) (rest name)))
+      (loop [tail (rest name) prefix (first name)]
+        (if (Character/isUpperCase (first tail))
+          (str prefix (first tail))
+          )
+        )
       (contains? #{"von" "фон" "van" "ван" "der" "дер" "til" "тиль" "zu" "цу" "af" "аф" "of"
                    "из" "de" "де" "des" "дез" "del" "дель" "dos" "душ" "дос" "du" "дю" "la"
                    "ла" "ля" "le" "ле" "haut" "от"} name) (str (first name))
