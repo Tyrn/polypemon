@@ -18,13 +18,13 @@
    (Integer/toString (- pa pb) base)))
 
 (defn zero-pad
-  "Returns i zero-padded to n"
+  "Returns i zero-padded to n."
   [n i]
   (format (str "%0" n "d") i))
 
 (defn str-strip-numbers
   "Returns a vector of integer numbers
-  embedded in a string argument"
+  embedded in a string argument."
   [s]
   (let [matcher (re-matcher #"\d+" s)]
     (loop [match (re-find matcher) result []]
@@ -33,10 +33,11 @@
         (recur (re-find matcher) (conj result (Integer/parseInt match)))))))
 
 (defn initials
-  "Reduces authors to initials"
+  "Reduces comma separated list of
+  authors to initials."
   [authors]
-  (->> (-> (cs/replace authors #"\"(?:\\.|[^\"\\])*\"" " ")
-           (cs/replace #"\"" " ")
+  (->> (-> (cs/replace authors #"\"(?:\\.|[^\"\\])*\"" " ")  ; Remove quoted substrings.
+           (cs/replace #"\"" " ")  ; Remove odd quotes.
            (cs/split #","))
        (filter (fn [author]
                  (-> (cs/replace author #"[-.]+" "")

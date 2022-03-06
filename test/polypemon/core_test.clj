@@ -1,19 +1,11 @@
 (ns polypemon.core-test
-  (:require [clojure.test :refer [deftest is testing]]
-            [midje.sweet :refer [fact =>]]
+  (:require [midje.sweet :refer [fact =>]]
             [polypemon.core :refer [zero-pad
                                     str-strip-numbers
                                     initials]]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 0))))
-
-(def three-pad (partial zero-pad 3))
-
 (fact
  "Returns a zero padded string representation of integer"
- (three-pad 3) => "003"
  (zero-pad 4 1) => "0001"
  (zero-pad 4 15111) => "15111"
  (zero-pad 5 2) => "00002")
