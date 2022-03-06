@@ -38,11 +38,13 @@
   [name]
   (let [cut (cs/split name #"'")]
     (cond
+      ; Deal with O'Connor and d'Artagnan.
       (and (> (count cut) 1) (not (cs/blank? (second cut))))
       (cond (and (Character/isLowerCase (first (second cut))) (not (cs/blank? (first cut))))
             (cs/upper-case (str (first (first cut))))
             :else (str (first cut) "'" (first (second cut))))
 
+      ; Deal with Leonardo DiCaprio and Jackie McGee.
       (and (> (count name) 1) (some #(Character/isUpperCase %) (rest name)))
       (loop [tail (rest name) prefix (first name)]
         (if (Character/isUpperCase (first tail))
