@@ -37,7 +37,9 @@
   handling special cases like von, Mc, O', etc."
   [name]
   (let [cut (cs/split name #"'")]
-    (cs/upper-case (str (first name)))))
+    (cond
+      true
+    (cs/upper-case (str (first name))))))
 
 (defn initials
   "Reduces comma separated list of
