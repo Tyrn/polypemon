@@ -45,7 +45,7 @@
  ;(initials "De Beers, Guido van Rossum") => "D.B.,G.v.R."
  ;(initials "Манфред фон Рихтгофен") => "М.ф.Р."
  ;(initials "Armand Jean du Plessis") => "A.J.d.P."
- ;(initials "Rory O'Connor") => "R.O'C."
+ (initials "Rory O'Connor") => "R.O'C."
  ;(initials "Öwyn Do'Üwr") => "Ö.Do'Ü."
  ;(initials "öwyn Do'üwr") => "Ö.D."
  ;(initials "Jason dinAlt") => "J.dinA."

@@ -38,8 +38,12 @@
   [name]
   (let [cut (cs/split name #"'")]
     (cond
-      true
-    (cs/upper-case (str (first name))))))
+      (and (> (count cut) 1) (not (cs/blank? (second cut))))
+      (cond (and (Character/isLowerCase (first (second cut))) (not (cs/blank? (first cut))))
+            (cs/upper-case (str (first (first cut))))
+            :else (str (first cut) "'" (first (second cut))))
+      :else
+      (cs/upper-case (str (first name))))))
 
 (defn initials
   "Reduces comma separated list of
