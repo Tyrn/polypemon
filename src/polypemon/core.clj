@@ -32,6 +32,12 @@
         result
         (recur (re-find matcher) (conj result (Integer/parseInt match)))))))
 
+(defn form-initial
+  "Makes an initial out of name,
+  handling special cases like von, Mc, O', etc."
+  [name]
+  (cs/upper-case (str (first name))))
+
 (defn initials
   "Reduces comma separated list of
   authors to initials."
@@ -51,8 +57,7 @@
                            (map (fn [barrel] (->> (cs/split barrel #"[\s.]+")
                                                   (filter (fn [name]
                                                             (not (cs/blank? name))))
-                                                  (map (fn [name]
-                                                         (cs/upper-case (str (first name)))))
+                                                  (map form-initial)
                                                   (cs/join "."))) b)
                            (cs/join "-" b)
                            (str b "."))))
