@@ -42,8 +42,10 @@
       (cond (and (Character/isLowerCase (first (second cut))) (not (cs/blank? (first cut))))
             (cs/upper-case (str (first (first cut))))
             :else (str (first cut) "'" (first (second cut))))
-      :else
-      (cs/upper-case (str (first name))))))
+      (contains? #{"von" "фон" "van" "ван" "der" "дер" "til" "тиль" "zu" "цу" "af" "аф" "of"
+                   "из" "de" "де" "des" "дез" "del" "дель" "dos" "душ" "дос" "du" "дю" "la"
+                   "ла" "ля" "le" "ле" "haut" "от"} name) (str (first name))
+      :else (cs/upper-case (str (first name))))))
 
 (defn initials
   "Reduces comma separated list of
