@@ -1,6 +1,6 @@
 (ns polypemon.core (:gen-class)
     (:require [cli-matic.core :refer [run-cmd]]
-              [clojure.string :as cljstr]))
+              [clojure.string :as cs]))
 
 ;; To run this, try from the project root:
 ;; clj -i examples/polypemon.clj -m polypemon add -a 1 -b 80
@@ -35,27 +35,27 @@
 (defn initials
   "Reduces authors to initials"
   [authors]
-  (->> (-> (cljstr/replace authors #"\"(?:\\.|[^\"\\])*\"" " ")
-           (cljstr/replace #"\"" " ")
-           (cljstr/split #","))
+  (->> (-> (cs/replace authors #"\"(?:\\.|[^\"\\])*\"" " ")
+           (cs/replace #"\"" " ")
+           (cs/split #","))
        (filter (fn [author]
-                 (-> (cljstr/replace author #"[-.]+" "")
-                     (cljstr/blank?)
+                 (-> (cs/replace author #"[-.]+" "")
+                     (cs/blank?)
                      (not))))
-       (map (fn [author] (as-> (cljstr/split author #"-") b
+       (map (fn [author] (as-> (cs/split author #"-") b
                            (filter (fn [barrel]
-                                     (-> (cljstr/replace barrel #"[.]+" "")
-                                         (cljstr/blank?)
+                                     (-> (cs/replace barrel #"[.]+" "")
+                                         (cs/blank?)
                                          (not))) b)
-                           (map (fn [barrel] (->> (cljstr/split barrel #"[\s.]+")
+                           (map (fn [barrel] (->> (cs/split barrel #"[\s.]+")
                                                   (filter (fn [name]
-                                                            (not (cljstr/blank? name))))
+                                                            (not (cs/blank? name))))
                                                   (map (fn [name]
-                                                         (cljstr/upper-case (str (first name)))))
-                                                  (cljstr/join "."))) b)
-                           (cljstr/join "-" b)
+                                                         (cs/upper-case (str (first name)))))
+                                                  (cs/join "."))) b)
+                           (cs/join "-" b)
                            (str b "."))))
-       (cljstr/join ",")))
+       (cs/join ",")))
 
 (def CONFIGURATION
   {:app         {:command     "polypemon"
