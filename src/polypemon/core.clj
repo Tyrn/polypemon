@@ -36,7 +36,8 @@
   "Makes an initial out of name,
   handling special cases like von, Mc, O', etc."
   [name]
-  (cs/upper-case (str (first name))))
+  (let [cut (cs/split name #"'")]
+    (cs/upper-case (str (first name)))))
 
 (defn initials
   "Reduces comma separated list of
