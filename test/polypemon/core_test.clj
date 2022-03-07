@@ -2,22 +2,42 @@
   (:require [midje.sweet :refer [fact =>]]
             [polypemon.core :refer [zero-pad
                                     str-strip-numbers
+                                    vcmp-int
+                                    strcmp-naturally
                                     initials]]))
 
 (fact
- "Returns a zero padded string representation of integer"
+ "Returns a zero padded string representation of integer."
  (zero-pad 4 1) => "0001"
  (zero-pad 4 15111) => "15111"
  (zero-pad 5 2) => "00002")
 
 (fact
  "Returns a vector of integer numbers
-  embedded in a string argument"
+  embedded in a string argument."
  (str-strip-numbers "ab11cdd2k.144") => [11, 2, 144]
  (str-strip-numbers "Ignacio Vazquez-Abrams") => [])
 
 (fact
- "Reduces authors to initials"
+ "Compares vectors of integers using 'string semantics'."
+ (vcmp-int [] []) => 0
+ (vcmp-int [1] []) => 1
+ (vcmp-int [3] []) => 1
+ (vcmp-int [1, 2, 3] [1, 2, 3, 4, 5]) => -2
+ (vcmp-int [1, 4] [1, 4, 16]) => -1
+ (vcmp-int [2, 8] [2, 2, 3]) => 1
+ (vcmp-int [0, 0, 2, 4] [0, 0, 15]) => -1
+ (vcmp-int [0, 13] [0, 2, 2]) => 1
+ (vcmp-int [11, 2] [11, 2]) => 0)
+
+(fact
+ "Compares strings naturally."
+ (strcmp-naturally "" "") => 0
+ (strcmp-naturally "2a" "10a") => -1
+ (strcmp-naturally "alfa" "bravo") => -1)
+
+(fact
+ "Reduces authors to initials."
  (initials "") => ""
  (initials " ") => ""
  (initials ".. , .. ") => ""
